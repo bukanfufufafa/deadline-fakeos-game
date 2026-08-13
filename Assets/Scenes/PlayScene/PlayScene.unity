@@ -533,6 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prabowoWindow: {fileID: 8872772600102714452, guid: 1e03e7cb4669eb74d9a2cdbc81c8866b, type: 3}
+  browserWindow: {fileID: 5503192277200224360, guid: 0069b8ee18acb8547922f54802784f81, type: 3}
 --- !u!4 &1250776347
 Transform:
   m_ObjectHideFlags: 0

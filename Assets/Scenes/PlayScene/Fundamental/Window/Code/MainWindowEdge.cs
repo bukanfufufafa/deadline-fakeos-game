@@ -43,8 +43,6 @@ public class MainWindowEdge : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Down");
-
         RectTransformUtility.ScreenPointToWorldPointInRectangle(transform as RectTransform, eventData.pressPosition, eventData.pressEventCamera, out Vector3 mousePos);
 
         var windowRect = window.Rect;
@@ -100,8 +98,6 @@ public class MainWindowEdge : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
             }
         }
 
-        Debug.Log($"Down DragMode {dragMode}");
-
         // Kalau masuk mode dragging.
         if (dragMode != DragMode.None)
         {
@@ -116,15 +112,11 @@ public class MainWindowEdge : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
                 dragAttempt = DragAttempt.Candidate;
                 DetermineCursor(windowRect, offsetPos);
             }
-
-             Debug.Log($"Down DragAttempt {dragAttempt}");
         }
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log($"Up DragAttempt {dragAttempt}");
-        
         // Batalkan dragging apabila masih masa candidate.
         if (dragAttempt == DragAttempt.Candidate)
         {
@@ -136,8 +128,6 @@ public class MainWindowEdge : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log($"BeginDrag DragMode {dragMode} DragAttempt {dragAttempt}");
-
         // Konfirmasi bahwa window benar-benar didrag.
         if (dragAttempt != DragAttempt.Candidate || eventData.pointerEnter == null) return;
         dragAttempt = DragAttempt.Go;
@@ -175,8 +165,6 @@ public class MainWindowEdge : MonoBehaviour, IDragHandler, IBeginDragHandler, IE
     public void OnDrag(PointerEventData eventData)
     {
         if (dragAttempt != DragAttempt.Go) return;
-
-        // Debug.Log($"Drag {dragMode}");
 
         RectTransformUtility.ScreenPointToWorldPointInRectangle(transform as RectTransform, eventData.position, eventData.pressEventCamera, out Vector3 mousePos);
 
